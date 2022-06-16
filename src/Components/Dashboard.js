@@ -26,7 +26,7 @@ const Dashboard = () => {
         </button>
       </div>
       <div className=" flex">
-        <div className=" h-[93vh] w-[20vw] bg-slate-600 py-10 hidden md:block lg:block">
+        <div className=" min-h-[93vh] w-[20vw] bg-slate-600 py-10 hidden md:block lg:block">
           <p>
             <Link to="/dashboard/charts">Charts</Link>
           </p>
