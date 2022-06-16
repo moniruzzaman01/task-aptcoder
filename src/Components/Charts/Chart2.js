@@ -5,27 +5,27 @@ const Chart2 = () => {
   const data = [
     {
       value: 100,
-      name: "展现",
+      name: "A",
       fill: "#8884d8",
     },
     {
       value: 80,
-      name: "点击",
+      name: "F",
       fill: "#83a6ed",
     },
     {
       value: 50,
-      name: "访问",
+      name: "H",
       fill: "#8dd1e1",
     },
     {
       value: 40,
-      name: "咨询",
+      name: "D",
       fill: "#82ca9d",
     },
     {
       value: 26,
-      name: "订单",
+      name: "R",
       fill: "#a4de6c",
     },
   ];

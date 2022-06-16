@@ -16,6 +16,12 @@ const Login = () => {
 
   return (
     <div className=" w-full px-5 md:w-1/2 lg:w-1/3 mx-auto mt-20">
+      <button
+        onClick={() => navigate("/dashboard")}
+        className=" btn btn-sm absolute top-5 right-5"
+      >
+        Dashboard
+      </button>
       <h1 className=" text-4xl font-bold mb-10">Login</h1>
       <form action="">
         <input
