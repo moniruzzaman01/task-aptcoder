@@ -1,15 +1,27 @@
 import React, { useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const [authUser] = useAuthState(auth);
+  const [EmailPassSignIn] = useSignInWithEmailAndPassword(auth);
   const navigate = useNavigate();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const pass = event.target.pass.value;
+    EmailPassSignIn(email, pass);
+  };
 
   useEffect(() => {
     if (authUser) {
+      console.log(authUser);
       navigate("/dashboard");
     }
   }, [authUser, navigate]);
@@ -23,7 +35,7 @@ const Login = () => {
         Dashboard
       </button>
       <h1 className=" text-4xl font-bold mb-10">Login</h1>
-      <form action="">
+      <form action="" onSubmit={handleLogin}>
         <input
           type="email"
           name="email"

@@ -2,8 +2,11 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import auth from "../firebase.init";
 import { Link, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className=" h-[7vh] w-full bg-slate-600 flex items-center justify-between">
@@ -19,7 +22,10 @@ const Dashboard = () => {
           </p>
         </div>
         <button
-          onClick={() => signOut(auth)}
+          onClick={() => {
+            signOut(auth);
+            navigate("/");
+          }}
           className=" btn btn-ghost mr-5 text-white"
         >
           Logout
