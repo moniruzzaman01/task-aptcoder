@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import auth from "../firebase.init";
 import SocialLogin from "./SocialLogin";
 
 const Login = () => {
+  const [authUser] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authUser) {
+      navigate("/dashboard");
+    }
+  }, [authUser, navigate]);
+
   return (
     <div className=" w-full px-5 md:w-1/2 lg:w-1/3 mx-auto mt-20">
       <h1 className=" text-4xl font-bold mb-10">Login</h1>
@@ -19,7 +31,7 @@ const Login = () => {
           className="input input-bordered input-primary w-full max-w-lg mb-2"
         />
         <p className=" text-left mb-5 lg:pl-7">New Here? Create an account.</p>
-        <button className=" btn btn-primary px-10">Login</button>
+        <button className=" btn btn-primary w-full lg:w-1/2">Login</button>
       </form>
       <SocialLogin />
     </div>
