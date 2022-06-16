@@ -4,9 +4,11 @@ import auth from "../firebase.init";
 
 const SocialLogin = () => {
   const [googleSignIn] = useSignInWithGoogle(auth);
+
   const handleGoogleLogin = () => {
     googleSignIn();
   };
+
   return (
     <div>
       <div className="flex flex-col w-full border-opacity-50">

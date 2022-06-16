@@ -3,7 +3,7 @@ import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   return (
-    <div className=" w-1/2 mx-auto mt-20">
+    <div className=" w-full px-5 lg:w-1/2 mx-auto mt-20">
       <h1 className=" text-4xl font-bold mb-10">Login</h1>
       <form action="">
         <input
