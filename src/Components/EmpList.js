@@ -155,24 +155,45 @@ const EmpList = () => {
   ];
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+  const [sort, setSort] = useState("");
   const [employee] = useState(name);
   const [modifiedList, setModifiedList] = useState([]);
 
   useEffect(() => {
-    if (filter) {
-      const modifiedList = employee.filter((list) =>
-        list.name.toLowerCase().includes(filter)
-      );
-      setModifiedList(modifiedList);
-    } else if (search) {
+    if (search) {
       const modifiedList = employee.filter(
         (list) => list.name.toLowerCase() === search.toLowerCase()
       );
       setModifiedList(modifiedList);
+    } else if (filter) {
+      const modifiedList = employee.filter((list) =>
+        list.name.toLowerCase().includes(filter)
+      );
+      setModifiedList(modifiedList);
+    } else if (sort === "1") {
+      const sort = modifiedList.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1;
+        } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
+      setModifiedList([...sort]);
+    } else if (sort === "2") {
+      const sort = modifiedList.sort((a, b) => {
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return -1;
+        } else if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
+      setModifiedList([...sort]);
     } else {
       setModifiedList(employee);
     }
-  }, [filter, employee, search]);
+  }, [filter, sort, employee, search]);
 
   return (
     <div>
@@ -181,21 +202,30 @@ const EmpList = () => {
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
           <input
             type="text"
-            onKeyUp={(event) => setSearch(event.target.value)}
-            placeholder="Search"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
             onKeyUp={(event) => setFilter(event.target.value)}
             placeholder="Filter"
             className="input input-bordered w-full"
           />
           <input
             type="text"
-            placeholder="Sort"
+            onKeyUp={(event) => setSearch(event.target.value)}
+            placeholder="Search"
             className="input input-bordered w-full"
           />
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Area</span>
+            </label>
+            <select
+              onChange={(event) => setSort(event.target.value)}
+              className="select select-bordered"
+              required
+            >
+              <option>Choose one</option>
+              <option value="1">A-Z</option>
+              <option value="2">Z-A</option>
+            </select>
+          </div>
         </div>
         <div className="overflow-x-auto">
           <table className="table w-full">
