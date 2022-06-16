@@ -3,7 +3,7 @@ import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   return (
-    <div className=" w-full px-5 lg:w-1/2 mx-auto mt-20">
+    <div className=" w-full px-5 md:w-1/2 lg:w-1/3 mx-auto mt-20">
       <h1 className=" text-4xl font-bold mb-10">Login</h1>
       <form action="">
         <input
@@ -18,7 +18,7 @@ const Login = () => {
           placeholder="Password"
           className="input input-bordered input-primary w-full max-w-lg mb-2"
         />
-        <p className=" text-left mb-5">New Here? Create an account.</p>
+        <p className=" text-left mb-5 lg:pl-7">New Here? Create an account.</p>
         <button className=" btn btn-primary px-10">Login</button>
       </form>
       <SocialLogin />
