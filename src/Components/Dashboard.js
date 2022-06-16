@@ -34,7 +34,7 @@ const Dashboard = () => {
             <Link to="/dashboard/list">Employee List</Link>
           </p>
         </div>
-        <div className=" w-[80vw]">
+        <div className=" w-full md:w-[80vw] lg:w-[80vw]">
           <Outlet />
         </div>
       </div>
